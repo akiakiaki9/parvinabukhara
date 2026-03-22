@@ -1,0 +1,396 @@
+/* /components/navbar/navbar.css */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: var(--transition);
+    padding: 1rem 5%;
+}
+
+.navbar.scrolled {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    padding: 0.8rem 5%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logo-icon {
+    animation: fadeIn 0.5s ease;
+}
+
+.restaurant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.restaurant-subtitle {
+    font-size: 0.7rem;
+    color: var(--text-gray);
+    display: block;
+    letter-spacing: 2px;
+}
+
+.logo-text {
+    line-height: 1.2;
+}
+
+/* Десктоп навигация */
+.navbar-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--gold-primary);
+}
+
+/* Действия */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.phones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.phone-link {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-gray);
+}
+
+.phone-link:hover {
+    color: var(--gold-primary);
+}
+
+.cart-button {
+    position: relative;
+    background: transparent;
+    padding: 8px;
+    border-radius: 50%;
+    color: var(--text-white);
+    transition: var(--transition);
+}
+
+.cart-button:hover {
+    color: var(--gold-primary);
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--gold-primary);
+    color: var(--bg-dark);
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-button {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--bg-dark);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.book-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Мобильная версия */
+.navbar-mobile {
+    display: none;
+}
+
+.mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-phone,
+.mobile-cart {
+    background: transparent;
+    color: var(--text-white);
+    padding: 8px;
+    position: relative;
+}
+
+.burger-menu {
+    background: transparent;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.burger-menu span {
+    width: 100%;
+    height: 2px;
+    background: var(--gold-primary);
+    transition: var(--transition);
+}
+
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Мобильное меню */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-nav-links li {
+    margin: 1.5rem 0;
+}
+
+.mobile-nav-links a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.mobile-nav-links a:hover {
+    color: var(--gold-primary);
+}
+
+.mobile-phones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.mobile-phone-link {
+    color: var(--gold-primary);
+    font-size: 1rem;
+}
+
+.mobile-book-button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--bg-dark);
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: fadeInUp 0.4s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    font-size: 2rem;
+    color: var(--text-gray);
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    color: var(--gold-primary);
+}
+
+.modal-icon {
+    margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: var(--text-gray);
+    margin-bottom: 1rem;
+}
+
+.modal-phones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.modal-phone-btn {
+    background: transparent;
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-primary);
+    padding: 12px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.modal-phone-btn:hover {
+    background: var(--gold-primary);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+
+.modal-note {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .navbar-desktop {
+        display: none;
+    }
+
+    .navbar-mobile {
+        display: block;
+    }
+
+    .navbar-logo .restaurant-name {
+        font-size: 1.2rem;
+    }
+
+    .navbar-logo .restaurant-subtitle {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 5%;
+    }
+
+    .logo-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+}
