@@ -733,3 +733,5 @@ const MENU = [
         image: "/images/data/meat_set/3.png"
     },
 ];
+
+export default MENU;

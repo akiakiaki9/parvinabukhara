@@ -1,0 +1,487 @@
+/* ========== HOME MENU STYLES ========== */
+.home-menu {
+    padding: 5rem 5% 3rem;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.home-menu-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Заголовок */
+.home-menu-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.menu-subtitle {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.home-menu-title {
+    font-size: 3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d4af37 0%, #f5e6b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.menu-description p {
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Категории с иконками */
+.menu-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: #b0b0b0;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.category-icon {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.category-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #d4af37;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.category-btn:hover {
+    color: #d4af37;
+}
+
+.category-btn:hover .category-icon {
+    transform: scale(1.1);
+}
+
+.category-btn.active {
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.category-btn.active::after {
+    width: 80%;
+}
+
+/* Секции меню */
+.menu-sections {
+    margin-top: 2rem;
+}
+
+/* Футер меню */
+.menu-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.full-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.full-menu-btn:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+}
+
+.full-menu-btn svg {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.full-menu-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* ========== MENU SECTION STYLES ========== */
+.menu-section {
+    padding: 6rem 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-section.odd {
+    background: linear-gradient(135deg, #0a0a0a 0%, rgba(17, 17, 17, 0.95) 100%);
+}
+
+.menu-section.even {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, #050505 100%);
+    position: relative;
+}
+
+.menu-section.even::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.menu-section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Заголовок секции */
+.menu-section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.menu-section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d4af37 0%, #f5e6b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.menu-section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.divider-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.divider-icon {
+    font-size: 1.5rem;
+    color: #d4af37;
+}
+
+/* Сетка меню */
+.menu-items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.menu-group {
+    display: flex;
+    gap: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.menu-group:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Изображение группы */
+.menu-group-image {
+    flex: 0.8;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.menu-group-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-group:hover .menu-group-image img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+}
+
+/* Блюда */
+.menu-group-dishes {
+    flex: 1.2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-dish-item {
+    padding: 1rem 0;
+}
+
+.dish-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.dish-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    position: relative;
+    padding-bottom: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.menu-dish-item:hover .dish-name {
+    color: #d4af37;
+}
+
+.dish-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+
+.price-amount {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #d4af37;
+    font-family: monospace;
+}
+
+.price-currency {
+    font-size: 0.8rem;
+    color: #b0b0b0;
+}
+
+.dish-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    margin-top: 1rem;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+    .home-menu-title {
+        font-size: 2.5rem;
+    }
+
+    .menu-description p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .category-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .menu-section {
+        padding: 4rem 5%;
+    }
+
+    .menu-group {
+        flex-direction: column;
+    }
+
+    .menu-group-image {
+        min-height: 300px;
+    }
+
+    .image-overlay {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .menu-group-dishes {
+        padding: 1.5rem;
+    }
+
+    .menu-section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-menu {
+        padding: 3rem 5%;
+    }
+
+    .home-menu-title {
+        font-size: 2rem;
+    }
+
+    .menu-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .menu-categories {
+        gap: 0.7rem;
+    }
+
+    .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .category-icon {
+        font-size: 1rem;
+    }
+
+    .menu-section {
+        padding: 3rem 5%;
+    }
+
+    .menu-section-title {
+        font-size: 1.8rem;
+    }
+
+    .dish-name {
+        font-size: 1rem;
+    }
+
+    .price-amount {
+        font-size: 1rem;
+    }
+
+    .menu-group-image {
+        min-height: 250px;
+    }
+
+    .divider-icon {
+        font-size: 1.2rem;
+    }
+
+    .full-menu-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .category-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .category-icon {
+        font-size: 0.9rem;
+    }
+
+    .category-name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-menu-title {
+        font-size: 1.5rem;
+    }
+
+    .menu-categories {
+        gap: 0.5rem;
+    }
+
+    .menu-section {
+        padding: 2rem 5%;
+    }
+
+    .menu-section-title {
+        font-size: 1.5rem;
+    }
+
+    .dish-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .menu-group-dishes {
+        padding: 1rem;
+    }
+
+    .menu-dish-item {
+        padding: 0.8rem 0;
+    }
+
+    .menu-items-grid {
+        gap: 1.5rem;
+    }
+
+    .divider-icon {
+        font-size: 1rem;
+    }
+}

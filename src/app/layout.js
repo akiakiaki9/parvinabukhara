@@ -1,5 +1,15 @@
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Geist, Geist_Mono } from "next/font/google";
+import './styles/globals.css'
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Parvina Restaurant | Элитный ресторан в Бухаре с фонтаном",
@@ -24,8 +34,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="ru">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {children}
+      </body>
     </html>
   );
-}
+};

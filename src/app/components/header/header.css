@@ -56,7 +56,9 @@
 }
 
 .badge-text {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 1.5rem;
   background: rgba(212, 175, 55, 0.1);
   border: 1px solid var(--gold-primary);
@@ -135,6 +137,7 @@
 
 .feature-item svg {
   color: var(--gold-primary);
+  font-size: 1.2rem;
 }
 
 /* Кнопки */
@@ -146,7 +149,8 @@
   animation: fadeInUp 0.8s ease 0.8s both;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
@@ -156,6 +160,7 @@
   border-radius: 50px;
   transition: var(--transition);
   cursor: pointer;
+  border: none;
 }
 
 .btn-primary {
@@ -179,55 +184,6 @@
   background: var(--gold-primary);
   color: var(--bg-dark);
   transform: translateY(-3px);
-}
-
-/* Индикатор скролла */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  animation: fadeIn 1s ease 1s both;
-}
-
-.scroll-indicator span {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--text-gray);
-  margin-bottom: 0.5rem;
-}
-
-.scroll-mouse {
-  width: 26px;
-  height: 40px;
-  border: 2px solid var(--gold-primary);
-  border-radius: 20px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.scroll-wheel {
-  width: 4px;
-  height: 8px;
-  background: var(--gold-primary);
-  border-radius: 2px;
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scroll 2s infinite;
-}
-
-@keyframes scroll {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(15px);
-  }
 }
 
 /* Социальные ссылки */
@@ -254,19 +210,43 @@
   transition: var(--transition);
 }
 
+.social-link svg {
+  color: var(--gold-primary);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
 .social-link:hover {
   background: var(--gold-primary);
   border-color: var(--gold-primary);
   transform: translateX(-5px);
 }
 
-.social-link svg {
-  color: var(--gold-primary);
-  transition: var(--transition);
-}
-
 .social-link:hover svg {
   color: var(--bg-dark);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Адаптивность */
@@ -274,47 +254,48 @@
   .hero-header {
     min-height: 600px;
   }
-  
+
   .title-line {
     font-size: 2.5rem;
   }
-  
+
   .title-sub {
     font-size: 1.2rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
     padding: 0 1rem;
   }
-  
+
   .hero-features {
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
   }
-  
+
   .feature-item {
     width: fit-content;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  
-  .btn-primary, .btn-secondary {
+
+  .btn-primary,
+  .btn-secondary {
     width: 200px;
     justify-content: center;
   }
-  
+
   .social-links {
     right: 1rem;
     bottom: 1rem;
     flex-direction: row;
   }
-  
+
   .social-link:hover {
     transform: translateY(-5px);
   }
@@ -324,11 +305,11 @@
   .title-line {
     font-size: 2rem;
   }
-  
+
   .title-sub {
     font-size: 1rem;
   }
-  
+
   .badge-text {
     font-size: 0.8rem;
   }
