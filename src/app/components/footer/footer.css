@@ -1,0 +1,676 @@
+/* Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
+    position: relative;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 4rem;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 5% 2rem;
+}
+
+/* Сетка футера */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Колонки */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Логотип */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-icon {
+    flex-shrink: 0;
+}
+
+.logo-icon svg {
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+    width: 45px;
+    height: 45px;
+}
+
+.logo-text {
+    flex: 1;
+}
+
+.footer-restaurant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #d4af37 0%, #f5e6b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.footer-restaurant-subtitle {
+    font-size: 0.7rem;
+    color: #b0b0b0;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Описание */
+.footer-description {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Социальные иконки */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    color: #d4af37;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    background: #d4af37;
+    color: #0a0a0a;
+    transform: translateX(5px);
+    border-color: #d4af37;
+}
+
+.social-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Заголовки колонок */
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #d4af37;
+    margin: 0 0 0.5rem 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, transparent);
+}
+
+/* Ссылки */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-link {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.footer-link:hover {
+    color: #d4af37;
+    transform: translateX(5px);
+}
+
+/* Контакты */
+.footer-contacts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-link,
+.contact-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    word-break: break-word;
+}
+
+.contact-link {
+    cursor: pointer;
+}
+
+.contact-link:hover {
+    color: #d4af37;
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    color: #d4af37;
+    font-size: 1rem;
+    min-width: 20px;
+    flex-shrink: 0;
+}
+
+/* Часы работы */
+.working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(212, 175, 55, 0.1);
+    gap: 1rem;
+}
+
+.hours-day {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.hours-time {
+    color: #d4af37;
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+/* Нижняя часть */
+.footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.copyright {
+    color: #6c6c6c;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.developer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6c6c6c;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.developer-icon {
+    color: #d4af37;
+    font-size: 0.9rem;
+}
+
+.developer-link {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.developer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.developer-link:hover {
+    color: #f5e6b2;
+}
+
+.developer-link:hover::after {
+    width: 100%;
+}
+
+/* Кнопка наверх */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    animation: fadeInUp 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== АДАПТИВНОСТЬ ==================== */
+
+/* Планшеты (1024px - 768px) */
+@media (max-width: 1024px) {
+    .footer-container {
+        padding: 3rem 4% 2rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .footer-title::after {
+        width: 35px;
+    }
+}
+
+/* Планшеты (768px - 641px) */
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 2.5rem 4% 1.5rem;
+    }
+
+    .footer-grid {
+        gap: 1.8rem;
+    }
+
+    .footer-restaurant-name {
+        font-size: 1.3rem;
+    }
+
+    .footer-description {
+        font-size: 0.85rem;
+    }
+
+    .footer-title {
+        font-size: 1rem;
+    }
+
+    .social-icon {
+        padding: 0.5rem 1rem;
+    }
+
+    .social-name {
+        font-size: 0.85rem;
+    }
+
+    .footer-link,
+    .contact-link,
+    .contact-info {
+        font-size: 0.85rem;
+    }
+
+    .hours-day,
+    .hours-time {
+        font-size: 0.85rem;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .developer {
+        justify-content: center;
+    }
+
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Мобильные устройства (640px - 481px) */
+@media (max-width: 640px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-column {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+    }
+
+    .footer-title {
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-description {
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .footer-social {
+        align-items: center;
+        width: 100%;
+    }
+
+    .social-icon {
+        width: auto;
+        min-width: 160px;
+        justify-content: center;
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px);
+    }
+
+    .footer-links {
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer-link {
+        text-align: center;
+    }
+
+    .footer-link:hover {
+        transform: translateX(0) translateY(-2px);
+    }
+
+    .footer-contacts {
+        align-items: center;
+        width: 100%;
+    }
+
+    .contact-link,
+    .contact-info {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .contact-link:hover {
+        transform: translateX(0) translateY(-2px);
+    }
+
+    .working-hours {
+        align-items: center;
+        width: 100%;
+    }
+
+    .hours-item {
+        flex-direction: column;
+        gap: 0.3rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hours-day {
+        font-size: 0.85rem;
+    }
+
+    .hours-time {
+        font-size: 0.85rem;
+    }
+}
+
+/* Маленькие мобильные устройства (480px и меньше) */
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 2rem 5% 1.5rem;
+    }
+
+    .footer-grid {
+        gap: 1.8rem;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .logo-icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text {
+        text-align: center;
+    }
+
+    .footer-restaurant-name {
+        font-size: 1.2rem;
+    }
+
+    .footer-restaurant-subtitle {
+        font-size: 0.65rem;
+    }
+
+    .footer-description {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .footer-title {
+        font-size: 0.95rem;
+    }
+
+    .social-icon {
+        min-width: 140px;
+        padding: 0.45rem 1rem;
+    }
+
+    .social-name {
+        font-size: 0.8rem;
+    }
+
+    .footer-link,
+    .contact-link,
+    .contact-info {
+        font-size: 0.8rem;
+    }
+
+    .contact-icon {
+        font-size: 0.9rem;
+    }
+
+    .hours-day,
+    .hours-time {
+        font-size: 0.8rem;
+    }
+
+    .copyright,
+    .developer {
+        font-size: 0.75rem;
+    }
+
+    .scroll-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Очень маленькие устройства (380px и меньше) */
+@media (max-width: 380px) {
+    .footer-container {
+        padding: 1.8rem 4% 1.2rem;
+    }
+
+    .social-icon {
+        min-width: 120px;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .social-name {
+        font-size: 0.75rem;
+    }
+
+    .footer-link,
+    .contact-link,
+    .contact-info {
+        font-size: 0.75rem;
+    }
+
+    .contact-icon {
+        font-size: 0.85rem;
+        min-width: 18px;
+    }
+
+    .hours-day,
+    .hours-time {
+        font-size: 0.75rem;
+    }
+
+    .footer-bottom-content {
+        gap: 0.6rem;
+    }
+
+    .developer {
+        gap: 0.3rem;
+    }
+}
+
+/* Альбомная ориентация на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        padding: 2rem 4% 1.5rem;
+    }
+}
+
+/* Планшеты в альбомной ориентации */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Retina дисплеи */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .footer::before {
+        height: 1px;
+    }
+    
+    .footer-title::after {
+        height: 1px;
+    }
+}
+
+/* Улучшенная доступность для touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+    .social-icon:hover,
+    .footer-link:hover,
+    .contact-link:hover,
+    .developer-link:hover {
+        transform: none;
+    }
+    
+    .social-icon:active,
+    .footer-link:active,
+    .contact-link:active {
+        opacity: 0.7;
+    }
+    
+    .scroll-to-top:active {
+        transform: scale(0.95);
+    }
+}

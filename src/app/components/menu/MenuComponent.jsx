@@ -10,7 +10,8 @@ import {
     MdRestaurantMenu,
     MdFastfood,
     MdLocalPizza,
-    MdOutlineRestaurant
+    MdOutlineRestaurant,
+    MdArrowForward
 } from 'react-icons/md';
 import { FaUtensils, FaLeaf } from 'react-icons/fa';
 import './menuComponent.css';
@@ -40,16 +41,10 @@ const MenuComponent = () => {
         meat_set: 'Мясные сеты',
     };
 
-    // Группируем блюда по изображению (каждые 3 блюда используют одно фото)
-    const groupItemsByImage = (items) => {
-        const groups = [];
-        for (let i = 0; i < items.length; i += 3) {
-            groups.push({
-                image: items[i].image,
-                dishes: items.slice(i, i + 3)
-            });
-        }
-        return groups;
+    // Получаем 3 блюда для категории
+    const getCategoryItems = (category) => {
+        const items = MENU.filter(item => item.category === category);
+        return items.slice(0, 3);
     };
 
     // Получаем уникальные категории из MENU
@@ -69,55 +64,6 @@ const MenuComponent = () => {
 
     const filteredCategories = getFilteredCategories();
 
-    // Компонент для отображения секции меню
-    const MenuSection = ({ category, title, isEven }) => {
-        // Фильтруем блюда по категории
-        const items = MENU.filter(item => item.category === category);
-        const groups = groupItemsByImage(items);
-
-        if (!items.length) return null;
-
-        return (
-            <section className={`menu-section ${isEven ? 'even' : 'odd'}`}>
-                <div className="menu-section-container">
-                    <div className="menu-section-header">
-                        <h2 className="menu-section-title">{title}</h2>
-                        <div className="menu-section-divider">
-                            <span className="divider-line"></span>
-                            <GiKnifeFork className="divider-icon" />
-                            <span className="divider-line"></span>
-                        </div>
-                    </div>
-
-                    <div className="menu-items-grid">
-                        {groups.map((group, groupIndex) => (
-                            <div key={groupIndex} className="menu-group">
-                                <div className="menu-group-image">
-                                    <img src={group.image} alt={`Блюда ${title}`} loading="lazy" />
-                                    <div className="image-overlay"></div>
-                                </div>
-                                <div className="menu-group-dishes">
-                                    {group.dishes.map((dish, dishIndex) => (
-                                        <div key={dish.id} className="menu-dish-item">
-                                            <div className="dish-info">
-                                                <h3 className="dish-name">{dish.name}</h3>
-                                                <div className="dish-price">
-                                                    <span className="price-amount">{dish.price}</span>
-                                                    <span className="price-currency">сум</span>
-                                                </div>
-                                            </div>
-                                            {dishIndex < group.dishes.length - 1 && <div className="dish-separator"></div>}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
-    };
-
     return (
         <section className="home-menu" id="menu">
             <div className="home-menu-container">
@@ -125,7 +71,7 @@ const MenuComponent = () => {
                     <span className="menu-subtitle">Откройте для себя</span>
                     <h2 className="home-menu-title">Наше меню</h2>
                     <div className="menu-description">
-                        <p>Изысканные блюда, приготовленные с любовью и вниманием к деталям</p>
+                        <p>Популярные блюда, которые стоит попробовать</p>
                     </div>
                 </div>
 
@@ -143,22 +89,47 @@ const MenuComponent = () => {
                     ))}
                 </div>
 
-                {/* Секции меню */}
-                <div className="menu-sections">
-                    {filteredCategories.map((category, index) => (
-                        <MenuSection
-                            key={category}
-                            category={category}
-                            title={categoryNames[category]}
-                            isEven={index % 2 === 1}
-                        />
-                    ))}
+                {/* Сетка категорий */}
+                <div className="menu-categories-grid">
+                    {filteredCategories.map((category) => {
+                        const items = getCategoryItems(category);
+                        if (!items.length) return null;
+
+                        return (
+                            <div key={category} className="category-card">
+                                <div className="category-card-header">
+                                    <h3 className="category-title">{categoryNames[category]}</h3>
+                                    <div className="category-divider"></div>
+                                </div>
+
+                                <div className="category-items">
+                                    {items.map((item, index) => (
+                                        <div key={item.id} className="menu-item">
+                                            <div className="menu-item-info">
+                                                <span className="item-number">{index + 1}</span>
+                                                <h4 className="item-name">{item.name}</h4>
+                                            </div>
+                                            <div className="item-price">
+                                                <span className="price">{item.price}</span>
+                                                <span className="currency">сум</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <a href="/menu" className="view-all-btn">
+                                    <span>Смотреть все</span>
+                                    <MdArrowForward />
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {/* Кнопка полного меню */}
                 <div className="menu-footer">
                     <a href="/menu" className="full-menu-btn">
-                        <span>Посмотреть полное меню</span>
+                        <span>Полное меню ресторана</span>
                         <MdOutlineRestaurant />
                     </a>
                 </div>
