@@ -55,7 +55,7 @@ const Header = () => {
     };
 
     // Выбираем видео в зависимости от устройства
-    const videoSource = isMobile ? "/videos/mobile.mp4" : "/videos/pc.mp4";
+    const videoSource = isMobile ? "/videos/pc1.mp4" : "/videos/pc1.mp4";
 
     return (
         <header className="hero-header">

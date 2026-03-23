@@ -1,6 +1,7 @@
 .banquets-page {
-    padding: 4rem 5%;
+    padding: 3rem 5%;
     background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
+    min-height: 100vh;
 }
 
 .banquets-container {
@@ -11,7 +12,7 @@
 /* Описание */
 .banquets-description {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .section-title {
@@ -34,15 +35,15 @@
 
 /* Особенности */
 .facilities-section {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .subsection-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #ffffff;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.8rem;
 }
@@ -60,265 +61,432 @@
 
 .facilities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
 }
 
 .facility-card {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     transition: all 0.3s ease;
 }
 
 .facility-card:hover {
     border-color: rgba(212, 175, 55, 0.5);
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .facility-icon {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #d4af37;
     margin-bottom: 0.5rem;
 }
 
 .facility-name {
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-/* Пакеты */
-.packages-section {
-    margin-bottom: 4rem;
-}
-
-.packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+/* Залы */
+.rooms-section {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
-.package-card {
+.room-card {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.package-card:hover {
-    border-color: rgba(212, 175, 55, 0.5);
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.room-card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.package-icon {
-    font-size: 2.5rem;
+.room-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(212, 175, 55, 0.05);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.room-icon {
+    font-size: 1.8rem;
     color: #d4af37;
-    margin-bottom: 1rem;
 }
 
-.package-title {
-    font-size: 1.3rem;
+.room-info {
+    flex: 1;
+}
+
+.room-name {
+    font-size: 1.2rem;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
-.package-price {
-    font-size: 1.2rem;
-    color: #d4af37;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-}
-
-.package-features {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1.5rem;
-}
-
-.package-features li {
+.room-capacity {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
     color: #b0b0b0;
-    padding: 0.5rem 0;
-    border-bottom: 1px dashed rgba(212, 175, 55, 0.1);
 }
 
-.package-btn {
+.capacity-icon {
+    font-size: 0.8rem;
+    color: #d4af37;
+}
+
+.room-description {
+    padding: 1rem 1.5rem;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.room-count {
+    padding: 0.5rem 1.5rem;
+}
+
+.count-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #d4af37, #b8860b);
-    color: #0a0a0a;
-    padding: 0.8rem 1.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    color: #d4af37;
+}
+
+/* Медиа */
+.room-media {
+    padding: 1rem 1.5rem;
+}
+
+.room-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+}
+
+.room-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+    cursor: pointer;
+}
+
+.room-image.vertical {
+    aspect-ratio: 9/16;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.room-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
-.package-btn:hover {
+.room-image:hover .image-overlay {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Видео */
+.room-video {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+.video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.video-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    color: #d4af37;
+    font-size: 0.8rem;
+}
+
+.video-badge svg {
+    font-size: 1rem;
+}
+
+/* Футер карточки */
+.room-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.call-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #0a0a0a;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.call-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
-/* Галерея */
-.gallery-section {
-    margin-bottom: 4rem;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    aspect-ratio: 4/3;
-}
-
-.gallery-item.large {
-    grid-column: span 2;
-    grid-row: span 2;
-    aspect-ratio: auto;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-/* Контактный баннер */
-.contact-banner {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 20px;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-
-.contact-banner-content h3 {
-    font-size: 1.5rem;
-    color: #d4af37;
-    margin-bottom: 0.5rem;
-}
-
-.contact-banner-content p {
+.phone-number {
     color: #b0b0b0;
-}
-
-.contact-banner-btn {
-    background: linear-gradient(135deg, #d4af37, #b8860b);
-    color: #0a0a0a;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.contact-banner-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    font-size: 0.85rem;
+    font-family: monospace;
 }
 
 /* Адаптивность */
 @media (max-width: 1024px) {
     .banquets-page {
-        padding: 3rem 5%;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .packages-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .gallery-item.large {
-        grid-column: span 1;
-    }
-}
-
-@media (max-width: 768px) {
-    .banquets-page {
         padding: 2rem 5%;
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .subsection-title {
         font-size: 1.3rem;
     }
 
-    .facilities-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .room-name {
+        font-size: 1.1rem;
     }
 
-    .packages-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-banner {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact-banner-content h3 {
-        font-size: 1.2rem;
+    .room-icon {
+        font-size: 1.6rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .banquets-page {
+        padding: 1.5rem 4%;
+    }
+
     .section-title {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .section-text {
         font-size: 0.9rem;
     }
 
+    .subsection-title {
+        font-size: 1.2rem;
+    }
+
     .facilities-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+
+    .facility-card {
+        padding: 0.8rem;
+    }
+
+    .facility-icon {
+        font-size: 1.3rem;
+    }
+
+    .facility-name {
+        font-size: 0.75rem;
+    }
+
+    .room-header {
+        padding: 1rem;
+    }
+
+    .room-icon {
+        font-size: 1.4rem;
+    }
+
+    .room-name {
+        font-size: 1rem;
+    }
+
+    .room-capacity {
+        font-size: 0.75rem;
+    }
+
+    .room-description {
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .room-media {
+        padding: 0.8rem 1rem;
+    }
+
+    .room-images {
+        gap: 0.6rem;
+    }
+
+    .room-footer {
+        padding: 0.8rem 1rem;
+    }
+
+    .call-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .phone-number {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .room-images {
         grid-template-columns: 1fr;
     }
 
-    .package-card {
-        padding: 1.5rem;
+    .room-image.vertical {
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (max-width: 480px) {
+    .banquets-page {
+        padding: 1rem 3%;
     }
 
-    .package-title {
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .section-text {
+        font-size: 0.85rem;
+    }
+
+    .subsection-title {
         font-size: 1.1rem;
     }
 
-    .package-price {
-        font-size: 1rem;
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+
+    .facility-card {
+        padding: 0.6rem;
+    }
+
+    .facility-icon {
+        font-size: 1.1rem;
+    }
+
+    .facility-name {
+        font-size: 0.7rem;
+    }
+
+    .room-header {
+        padding: 0.8rem;
+    }
+
+    .room-icon {
+        font-size: 1.2rem;
+    }
+
+    .room-name {
+        font-size: 0.9rem;
+    }
+
+    .room-description {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .room-media {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .room-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 0.8rem;
+    }
+
+    .call-btn {
+        justify-content: center;
+    }
+
+    .phone-number {
+        text-align: center;
+    }
+
+    .video-badge {
+        bottom: 0.5rem;
+        right: 0.5rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
     }
 }

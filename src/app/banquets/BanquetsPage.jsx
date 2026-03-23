@@ -1,65 +1,88 @@
 "use client"
+import { useRef, useEffect } from 'react';
 import PageHeader from '../components/pageHeader/PageHeader';
-import { FaUsers, FaUtensils, FaMusic, FaCamera, FaParking, FaWifi } from 'react-icons/fa';
+import { FaUsers, FaUtensils, FaParking, FaWifi, FaPhone, FaStar, FaCrown, FaTree, FaChair, FaTv } from 'react-icons/fa';
+import { GiSoundWaves } from 'react-icons/gi';
 import { MdEmojiEvents } from 'react-icons/md';
 import './banquetsPage.css';
 
 const BanquetsPage = () => {
-    const packages = [
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 0.8;
+        }
+    }, []);
+
+    const rooms = [
         {
-            title: 'Свадебный банкет',
-            price: 'от 250 000 сум/чел',
-            features: [
-                'Вместимость до 150 гостей',
-                'Живая музыка 3 часа',
-                'Фотограф в подарок',
-                'Свадебный торт',
-                'Украшение зала',
-                'Приветственный фуршет'
+            id: 1,
+            category: 'cabin',
+            name: 'Кабины',
+            type: 'Кабины',
+            capacity: '15-20 человек',
+            count: 5,
+            description: 'Уютные кабинеты для приватных встреч и небольших компаний',
+            images: [
+                '/images/banquets/1.png',
+                '/images/banquets/2.png'
             ],
+            icon: <FaChair />
+        },
+        {
+            id: 2,
+            category: 'exotic',
+            name: 'Экзотический зал',
+            capacity: '20 человек',
+            description: 'Уникальный зал с восточным колоритом и неповторимой атмосферой',
+            images: [
+                '/images/banquets/3.png',
+                '/images/banquets/4.png'
+            ],
+            icon: <FaTree />
+        },
+        {
+            id: 3,
+            category: 'vip',
+            name: 'VIP зал',
+            capacity: '15 человек',
+            description: 'Премиальный зал для особых случаев с индивидуальным обслуживанием',
+            images: [
+                '/images/banquets/5.png',
+                '/images/banquets/6.png'
+            ],
+            hasVertical: true,
+            icon: <FaCrown />
+        },
+        {
+            id: 4,
+            category: 'banquet',
+            name: 'Банкетный зал',
+            capacity: '250 человек',
+            description: 'Главный зал ресторана для масштабных торжеств и мероприятий',
+            hasVideo: true,
             icon: <MdEmojiEvents />
-        },
-        {
-            title: 'Юбилей',
-            price: 'от 200 000 сум/чел',
-            features: [
-                'Вместимость до 100 гостей',
-                'DJ сопровождение',
-                'Индивидуальное меню',
-                'Оформление зала',
-                'Караоке',
-                'Фотозона'
-            ],
-            icon: <FaMusic />
-        },
-        {
-            title: 'Корпоратив',
-            price: 'от 180 000 сум/чел',
-            features: [
-                'Вместимость до 80 гостей',
-                'Презентационное оборудование',
-                'Кофе-брейк',
-                'Бизнес-ланч',
-                'VIP обслуживание',
-                'Бесплатный Wi-Fi'
-            ],
-            icon: <FaUsers />
         }
     ];
 
     const facilities = [
-        { icon: <FaUsers />, name: 'До 200 гостей' },
+        { icon: <FaUsers />, name: 'До 250 гостей' },
         { icon: <FaUtensils />, name: 'Индивидуальное меню' },
-        { icon: <FaMusic />, name: 'Живая музыка' },
-        { icon: <FaCamera />, name: 'Фотозона' },
+        { icon: <GiSoundWaves />, name: 'Живая музыка' },
+        { icon: <FaTv />, name: 'Презентационное оборудование' },
         { icon: <FaParking />, name: 'Парковка' },
         { icon: <FaWifi />, name: 'Wi-Fi' }
     ];
 
+    const handleCall = () => {
+        window.location.href = 'tel:+998936870020';
+    };
+
     return (
         <>
             <PageHeader
-                title="Банкетный зал"
+                title="Банкетные залы"
                 breadcrumb={[
                     { name: 'Главная', link: '/' },
                     { name: 'Банкеты' }
@@ -70,12 +93,10 @@ const BanquetsPage = () => {
                 <div className="banquets-container">
                     {/* Описание */}
                     <div className="banquets-description">
-                        <h2 className="section-title">Идеальное место для вашего праздника</h2>
+                        <h2 className="section-title">Пространство для ваших торжеств</h2>
                         <p className="section-text">
-                            Parvina Restaurant предлагает элегантный банкетный зал для проведения
-                            свадеб, юбилеев, корпоративов и других торжественных мероприятий.
-                            Уникальная атмосфера, изысканная кухня и профессиональное обслуживание
-                            сделают ваш праздник незабываемым.
+                            Parvina Restaurant предлагает разнообразные залы для проведения мероприятий любого масштаба.
+                            От уютных кабинетов до просторного банкетного зала — мы создадим идеальную атмосферу для вашего праздника.
                         </p>
                     </div>
 
@@ -92,73 +113,72 @@ const BanquetsPage = () => {
                         </div>
                     </div>
 
-                    {/* Пакеты */}
-                    <div className="packages-section">
-                        <h3 className="subsection-title">Банкетные пакеты</h3>
-                        <div className="packages-grid">
-                            {packages.map((pkg, index) => (
-                                <div key={index} className="package-card">
-                                    <div className="package-icon">{pkg.icon}</div>
-                                    <h3 className="package-title">{pkg.title}</h3>
-                                    <div className="package-price">{pkg.price}</div>
-                                    <ul className="package-features">
-                                        {pkg.features.map((feature, idx) => (
-                                            <li key={idx}>{feature}</li>
-                                        ))}
-                                    </ul>
-                                    <a href="tel:+998936870020" className="package-btn">
-                                        Забронировать
-                                    </a>
+                    {/* Залы */}
+                    <div className="rooms-section">
+                        {rooms.map((room) => (
+                            <div key={room.id} className="room-card">
+                                <div className="room-header">
+                                    <div className="room-icon">{room.icon}</div>
+                                    <div className="room-info">
+                                        <h3 className="room-name">{room.name}</h3>
+                                        <p className="room-capacity">
+                                            <FaUsers className="capacity-icon" />
+                                            <span>{room.capacity}</span>
+                                        </p>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
 
-                    <div className="gallery-section">
-    <h3 className="subsection-title">Галерея банкетного зала</h3>
-    <div className="gallery-grid">
-        <div className="gallery-item large">
-            <img 
-                src="https://picsum.photos/1200/800?random=1" 
-                alt="Банкетный зал" 
-            />
-        </div>
-        <div className="gallery-item">
-            <img 
-                src="https://picsum.photos/800/600?random=2" 
-                alt="Украшение зала" 
-            />
-        </div>
-        <div className="gallery-item">
-            <img 
-                src="https://picsum.photos/800/600?random=3" 
-                alt="Сервировка стола" 
-            />
-        </div>
-        <div className="gallery-item">
-            <img 
-                src="https://picsum.photos/800/600?random=4" 
-                alt="Фонтан" 
-            />
-        </div>
-        <div className="gallery-item">
-            <img 
-                src="https://picsum.photos/800/600?random=5" 
-                alt="Живая музыка" 
-            />
-        </div>
-    </div>
-</div>
+                                <p className="room-description">{room.description}</p>
 
-                    {/* Контакт */}
-                    <div className="contact-banner">
-                        <div className="contact-banner-content">
-                            <h3>Организуйте идеальный праздник</h3>
-                            <p>Свяжитесь с нами для расчета стоимости и консультации</p>
-                        </div>
-                        <a href="tel:+998936870020" className="contact-banner-btn">
-                            Связаться с нами
-                        </a>
+                                {room.count && (
+                                    <div className="room-count">
+                                        <span className="count-badge">{room.count} кабинета</span>
+                                    </div>
+                                )}
+
+                                <div className="room-media">
+                                    {room.hasVideo ? (
+                                        <div className="room-video">
+                                            <video
+                                                ref={videoRef}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="video-element"
+                                            >
+                                                <source src="/videos/banquet.mp4" type="video/mp4" />
+                                            </video>
+                                            <div className="video-overlay"></div>
+                                            <div className="video-badge">
+                                                <GiSoundWaves />
+                                                <span>Живое видео</span>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="room-images">
+                                            {room.images.map((img, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    className={`room-image ${room.hasVertical && idx === 1 ? 'vertical' : ''}`}
+                                                >
+                                                    <img src={img} alt={`${room.name} - фото ${idx + 1}`} loading="lazy" />
+                                                    <div className="image-overlay"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="room-footer">
+                                    <button className="call-btn" onClick={handleCall}>
+                                        <FaPhone />
+                                        <span>Позвонить</span>
+                                    </button>
+                                    <span className="phone-number">+998 (93) 687-00-20</span>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
