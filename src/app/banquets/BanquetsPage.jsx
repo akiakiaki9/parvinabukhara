@@ -34,7 +34,7 @@ const BanquetsPage = () => {
             id: 2,
             category: 'exotic',
             name: 'Экзотический зал',
-            capacity: '20 человек',
+            capacity: '130 человек',
             description: 'Уникальный зал с восточным колоритом и неповторимой атмосферой',
             images: [
                 '/images/banquets/3.png',

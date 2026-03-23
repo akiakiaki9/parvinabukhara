@@ -605,3 +605,55 @@
         max-height: 75vh;
     }
 }
+
+/* Добавляем в конец файла перед адаптивностью */
+
+/* Позиционирование изображений */
+.dish-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Верхняя часть */
+.dish-image.position-top img {
+    object-position: top;
+}
+
+/* Средняя часть */
+.dish-image.position-center img {
+    object-position: center;
+}
+
+/* Нижняя часть */
+.dish-image.position-bottom img {
+    object-position: bottom;
+}
+
+/* При наведении - показываем полное изображение */
+.dish-image:hover img {
+    object-position: center;
+    transform: scale(1.05);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .dish-image {
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dish-image {
+        height: 220px;
+    }
+}

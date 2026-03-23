@@ -40,6 +40,21 @@ const MenuPage = () => {
         }))
     ];
 
+    // Функция для определения позиции изображения на основе индекса блюда
+    const getImagePosition = (index) => {
+        const position = index % 3;
+        switch(position) {
+            case 0:
+                return 'top'; // верхняя часть
+            case 1:
+                return 'center'; // средняя часть
+            case 2:
+                return 'bottom'; // нижняя часть
+            default:
+                return 'center';
+        }
+    };
+
     const getFilteredItems = () => {
         let filtered = MENU;
 
@@ -166,44 +181,52 @@ const MenuPage = () => {
                                         </div>
 
                                         <div className="menu-category-items">
-                                            {items.map((dish) => (
-                                                <div key={dish.id} className="menu-dish-card">
-                                                    <div
-                                                        className="dish-image"
-                                                        onClick={() => openModal(dish.image, dish.name)}
-                                                    >
-                                                        <img src={dish.image} alt={dish.name} loading="lazy" />
-                                                        <div className="image-overlay">
-                                                            <div className="zoom-icon">
-                                                                <MdZoomIn />
+                                            {items.map((dish, index) => {
+                                                const position = getImagePosition(index);
+                                                return (
+                                                    <div key={dish.id} className="menu-dish-card">
+                                                        <div
+                                                            className={`dish-image position-${position}`}
+                                                            onClick={() => openModal(dish.image, dish.name)}
+                                                        >
+                                                            <img 
+                                                                src={dish.image} 
+                                                                alt={dish.name} 
+                                                                loading="lazy" 
+                                                                className={`image-${position}`}
+                                                            />
+                                                            <div className="image-overlay">
+                                                                <div className="zoom-icon">
+                                                                    <MdZoomIn />
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="dish-details">
-                                                        <h3 className="dish-name">{dish.name}</h3>
-                                                        <div className="dish-price">
-                                                            <span className="price">{dish.price}</span>
-                                                            <span className="currency">сум</span>
+                                                        <div className="dish-details">
+                                                            <h3 className="dish-name">{dish.name}</h3>
+                                                            <div className="dish-price">
+                                                                <span className="price">{dish.price}</span>
+                                                                <span className="currency">сум</span>
+                                                            </div>
+                                                            <button
+                                                                className={`add-to-cart-btn ${addedToCart[dish.id] ? 'added' : ''}`}
+                                                                onClick={() => handleAddToCart(dish)}
+                                                            >
+                                                                {addedToCart[dish.id] ? (
+                                                                    <>
+                                                                        <FaCheck />
+                                                                        <span>Добавлено</span>
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        <MdAddShoppingCart />
+                                                                        <span>В корзину</span>
+                                                                    </>
+                                                                )}
+                                                            </button>
                                                         </div>
-                                                        <button
-                                                            className={`add-to-cart-btn ${addedToCart[dish.id] ? 'added' : ''}`}
-                                                            onClick={() => handleAddToCart(dish)}
-                                                        >
-                                                            {addedToCart[dish.id] ? (
-                                                                <>
-                                                                    <FaCheck />
-                                                                    <span>Добавлено</span>
-                                                                </>
-                                                            ) : (
-                                                                <>
-                                                                    <MdAddShoppingCart />
-                                                                    <span>В корзину</span>
-                                                                </>
-                                                            )}
-                                                        </button>
                                                     </div>
-                                                </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 );
