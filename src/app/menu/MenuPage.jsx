@@ -1,5 +1,6 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import MENU from '../utils/data';
 import PageHeader from '../components/pageHeader/PageHeader';
 import { useCart } from '../context/CartContext';
@@ -9,6 +10,7 @@ import { FaUtensils, FaLeaf, FaSearch, FaCheck } from 'react-icons/fa';
 import './menuPage.css';
 
 const MenuPage = () => {
+    const searchParams = useSearchParams();
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [modalImage, setModalImage] = useState(null);
@@ -30,6 +32,36 @@ const MenuPage = () => {
         categoryNames[cat].count = MENU.filter(item => item.category === cat).length;
     });
 
+    // Маппинг названий категорий для URL
+    const categoryMap = {
+        'salads': 'salads',
+        'cold-wishes': 'cold_wishes',
+        'assorted': 'assorted',
+        'soups': 'soups',
+        'second-wishes': 'second_wishes',
+        'shashlik': 'shashlik',
+        'meat-set': 'meat_set'
+    };
+
+    // Обратный маппинг
+    const reverseCategoryMap = {
+        salads: 'salads',
+        cold_wishes: 'cold-wishes',
+        assorted: 'assorted',
+        soups: 'soups',
+        second_wishes: 'second-wishes',
+        shashlik: 'shashlik',
+        meat_set: 'meat-set'
+    };
+
+    // Получение категории из URL при загрузке
+    useEffect(() => {
+        const categoryParam = searchParams.get('category');
+        if (categoryParam && categoryMap[categoryParam]) {
+            setActiveCategory(categoryMap[categoryParam]);
+        }
+    }, [searchParams]);
+
     const categories = [
         { id: 'all', name: 'Все блюда', icon: <FaSearch />, count: MENU.length },
         ...Object.keys(categoryNames).map(key => ({
@@ -43,7 +75,7 @@ const MenuPage = () => {
     // Функция для определения позиции изображения на основе индекса блюда
     const getImagePosition = (index) => {
         const position = index % 3;
-        switch(position) {
+        switch (position) {
             case 0:
                 return 'top';
             case 1:
@@ -84,10 +116,10 @@ const MenuPage = () => {
     const categoriesToShow = Object.keys(groupedByCategory);
 
     const openModal = (imageUrl, dishName, position) => {
-        setModalImage({ 
-            url: imageUrl, 
-            name: dishName, 
-            position: position 
+        setModalImage({
+            url: imageUrl,
+            name: dishName,
+            position: position
         });
         document.body.style.overflow = 'hidden';
     };
@@ -193,10 +225,10 @@ const MenuPage = () => {
                                                             className={`dish-image ${position}`}
                                                             onClick={() => openModal(dish.image, dish.name, position)}
                                                         >
-                                                            <img 
-                                                                src={dish.image} 
-                                                                alt={dish.name} 
-                                                                loading="lazy" 
+                                                            <img
+                                                                src={dish.image}
+                                                                alt={dish.name}
+                                                                loading="lazy"
                                                             />
                                                             <div className="image-overlay">
                                                                 <div className="zoom-icon">
@@ -249,9 +281,9 @@ const MenuPage = () => {
                         </button>
                         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                             <div className={`modal-image-wrapper ${modalImage.position}`}>
-                                <img 
-                                    src={modalImage.url} 
-                                    alt={modalImage.name} 
+                                <img
+                                    src={modalImage.url}
+                                    alt={modalImage.name}
                                     className="modal-image"
                                 />
                             </div>

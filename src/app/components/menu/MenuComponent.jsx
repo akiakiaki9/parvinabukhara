@@ -19,7 +19,7 @@ import './menuComponent.css';
 const MenuComponent = () => {
     const [activeCategory, setActiveCategory] = useState('all');
 
-    // Категории с иконками и изображениями (порядок изменен)
+    // Категории с иконками и изображениями
     const categories = [
         { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: '/images/menu/67.png' },
         { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
@@ -39,6 +39,17 @@ const MenuComponent = () => {
         second_wishes: 'Вторые блюда',
         shashlik: 'Шашлыки',
         meat_set: 'Мясные сеты',
+    };
+
+    // Маппинг для URL параметров
+    const reverseCategoryMap = {
+        salads: 'salads',
+        cold_wishes: 'cold-wishes',
+        assorted: 'assorted',
+        soups: 'soups',
+        second_wishes: 'second-wishes',
+        shashlik: 'shashlik',
+        meat_set: 'meat-set'
     };
 
     // Порядок категорий для отображения в сетке
@@ -68,7 +79,6 @@ const MenuComponent = () => {
 
     const getFilteredCategories = () => {
         if (activeCategory === 'all') {
-            // Сортируем категории по заданному порядку
             return categoryOrder.filter(cat => uniqueCategories.includes(cat));
         }
         return [activeCategory];
@@ -93,7 +103,7 @@ const MenuComponent = () => {
                     </div>
                 </div>
 
-                {/* Категории с иконками - также в новом порядке */}
+                {/* Категории с иконками */}
                 <div className="menu-categories">
                     {categories.map(category => (
                         <button
@@ -140,7 +150,7 @@ const MenuComponent = () => {
                                     ))}
                                 </div>
 
-                                <a href="/menu" className="view-all-btn">
+                                <a href={`/menu?category=${reverseCategoryMap[category]}`} className="view-all-btn">
                                     <span>Смотреть все</span>
                                     <MdArrowForward />
                                 </a>
