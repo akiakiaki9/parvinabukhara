@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import { GiKnifeFork } from "react-icons/gi";
 import "./header.css";
+import Link from "next/link";
 
 const Header = () => {
     const videoRef = useRef(null);
@@ -109,27 +110,24 @@ const Header = () => {
                     </div>
 
                     <div className="hero-buttons">
-                        <button
+                        <Link href='/menu'
                             className="btn-primary"
-                            onClick={() => navigateTo('/menu')}
                         >
                             <span>Наше меню</span>
                             <FiArrowRight />
-                        </button>
-                        <button
+                        </Link>
+                        <Link href='/banquets'
                             className="btn-secondary"
-                            onClick={() => navigateTo('/banquets')}
                         >
                             <span>Банкеты</span>
                             <FiCalendar />
-                        </button>
-                        <button
+                        </Link>
+                        <Link href='/contacts'
                             className="btn-outline"
-                            onClick={() => navigateTo('/contacts')}
                         >
                             <span>Контакты</span>
                             <FiChevronRight />
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
