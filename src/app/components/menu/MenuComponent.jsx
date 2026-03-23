@@ -21,14 +21,14 @@ const MenuComponent = () => {
 
     // Категории с иконками и изображениями
     const categories = [
-        { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg' },
-        { id: 'salads', name: 'Салаты', icon: <FaLeaf />, image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg' },
-        { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon />, image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg' },
-        { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg' },
-        { id: 'soups', name: 'Супы', icon: <MdFastfood />, image: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg' },
-        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg' },
-        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: 'https://images.pexels.com/photos/1109197/pexels-photo-1109197.jpeg' },
-        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: 'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg' },
+        { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: '/images/menu/67.png' },
+        { id: 'salads', name: 'Салаты', icon: <FaLeaf />, image: '/images/menu/1.png' },
+        { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon />, image: '/images/menu/34.png' },
+        { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: '/images/menu/40.png' },
+        { id: 'soups', name: 'Супы', icon: <MdFastfood />, image: '/images/menu/43.png' },
+        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: '/images/menu/49.png' },
+        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
+        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: '/images/menu/93.png' },
     ];
 
     const categoryNames = {
