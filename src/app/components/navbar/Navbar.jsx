@@ -1,7 +1,9 @@
+// /components/navbar/Navbar.tsx
 "use client"
 import { useState, useEffect } from 'react';
 import { useCart } from '@/app/context/CartContext';
 import './navbar.css';
+import Image from 'next/image';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,12 +56,13 @@ const Navbar = () => {
                     {/* Логотип и название */}
                     <div className="navbar-logo">
                         <div className="logo-icon">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 5 L25 12 L20 19 L15 12 L20 5Z" fill="#d4af37" stroke="#d4af37" strokeWidth="1" />
-                                <circle cx="20" cy="20" r="15" stroke="#d4af37" strokeWidth="2" fill="none" />
-                                <path d="M20 25 L20 35 M15 30 L25 30" stroke="#d4af37" strokeWidth="2" />
-                                <circle cx="20" cy="20" r="3" fill="#d4af37" />
-                            </svg>
+                            <Image
+                                src="/images/logo.png"
+                                alt="Parvina Restaurant Logo"
+                                width={40}
+                                height={40}
+                                priority
+                            />
                         </div>
                         <div className="logo-text">
                             <span className="restaurant-name">Parvina</span>

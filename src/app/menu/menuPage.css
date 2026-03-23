@@ -168,7 +168,7 @@
 .dish-image {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 280px;
     overflow: hidden;
     cursor: pointer;
 }
@@ -180,7 +180,22 @@
     transition: transform 0.4s ease;
 }
 
-.menu-dish-card:hover .dish-image img {
+/* Позиционирование изображений в карточке */
+.dish-image.position-top img {
+    object-position: top;
+}
+
+.dish-image.position-center img {
+    object-position: center;
+}
+
+.dish-image.position-bottom img {
+    object-position: bottom;
+}
+
+/* При наведении на карточку показываем полное изображение */
+.dish-image:hover img {
+    object-position: center;
     transform: scale(1.05);
 }
 
@@ -413,14 +428,40 @@
     justify-content: center;
 }
 
-.modal-content img {
-    max-width: 85vw;
-    max-height: 85vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+/* Обертка для изображения в модалке */
+.modal-image-wrapper {
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    border-radius: 12px;
+}
+
+/* Позиционирование в модалке */
+.modal-image-wrapper.position-top .modal-image {
+    object-position: top;
+}
+
+.modal-image-wrapper.position-center .modal-image {
+    object-position: center;
+}
+
+.modal-image-wrapper.position-bottom .modal-image {
+    object-position: bottom;
+}
+
+/* При наведении на модальное изображение показываем полное */
+.modal-image-wrapper:hover .modal-image {
+    object-position: center;
+    transform: scale(1);
 }
 
 .modal-caption {
@@ -452,7 +493,7 @@
     }
 
     .dish-image {
-        height: 200px;
+        height: 240px;
     }
 
     .zoom-icon {
@@ -503,7 +544,7 @@
     }
 
     .dish-image {
-        height: 180px;
+        height: 220px;
     }
 
     .dish-name {
@@ -519,6 +560,10 @@
         font-size: 0.8rem;
     }
 
+    .modal-image-wrapper {
+        height: 80vh;
+    }
+    
     .modal-close {
         top: -45px;
         width: 35px;
@@ -569,7 +614,7 @@
     }
 
     .dish-image {
-        height: 200px;
+        height: 220px;
     }
 
     .dish-name {
@@ -589,71 +634,18 @@
         padding: 0.6rem;
     }
 
+    .modal-image-wrapper {
+        height: 75vh;
+    }
+    
     .modal-close {
         top: -40px;
         width: 30px;
         height: 30px;
         font-size: 0.9rem;
     }
-
+    
     .modal-caption span {
         font-size: 0.85rem;
-    }
-    
-    .modal-content img {
-        max-width: 95vw;
-        max-height: 75vh;
-    }
-}
-
-/* Добавляем в конец файла перед адаптивностью */
-
-/* Позиционирование изображений */
-.dish-image {
-    position: relative;
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.dish-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-/* Верхняя часть */
-.dish-image.position-top img {
-    object-position: top;
-}
-
-/* Средняя часть */
-.dish-image.position-center img {
-    object-position: center;
-}
-
-/* Нижняя часть */
-.dish-image.position-bottom img {
-    object-position: bottom;
-}
-
-/* При наведении - показываем полное изображение */
-.dish-image:hover img {
-    object-position: center;
-    transform: scale(1.05);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .dish-image {
-        height: 240px;
-    }
-}
-
-@media (max-width: 480px) {
-    .dish-image {
-        height: 220px;
     }
 }

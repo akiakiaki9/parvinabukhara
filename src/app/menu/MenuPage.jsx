@@ -45,11 +45,11 @@ const MenuPage = () => {
         const position = index % 3;
         switch(position) {
             case 0:
-                return 'top'; // верхняя часть
+                return 'top';
             case 1:
-                return 'center'; // средняя часть
+                return 'center';
             case 2:
-                return 'bottom'; // нижняя часть
+                return 'bottom';
             default:
                 return 'center';
         }
@@ -83,8 +83,12 @@ const MenuPage = () => {
 
     const categoriesToShow = Object.keys(groupedByCategory);
 
-    const openModal = (imageUrl, dishName) => {
-        setModalImage({ url: imageUrl, name: dishName });
+    const openModal = (imageUrl, dishName, position) => {
+        setModalImage({ 
+            url: imageUrl, 
+            name: dishName, 
+            position: position 
+        });
         document.body.style.overflow = 'hidden';
     };
 
@@ -186,14 +190,13 @@ const MenuPage = () => {
                                                 return (
                                                     <div key={dish.id} className="menu-dish-card">
                                                         <div
-                                                            className={`dish-image position-${position}`}
-                                                            onClick={() => openModal(dish.image, dish.name)}
+                                                            className={`dish-image ${position}`}
+                                                            onClick={() => openModal(dish.image, dish.name, position)}
                                                         >
                                                             <img 
                                                                 src={dish.image} 
                                                                 alt={dish.name} 
                                                                 loading="lazy" 
-                                                                className={`image-${position}`}
                                                             />
                                                             <div className="image-overlay">
                                                                 <div className="zoom-icon">
@@ -245,7 +248,13 @@ const MenuPage = () => {
                             <MdClose />
                         </button>
                         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                            <img src={modalImage.url} alt={modalImage.name} />
+                            <div className={`modal-image-wrapper ${modalImage.position}`}>
+                                <img 
+                                    src={modalImage.url} 
+                                    alt={modalImage.name} 
+                                    className="modal-image"
+                                />
+                            </div>
                             <div className="modal-caption">
                                 <span>{modalImage.name}</span>
                             </div>

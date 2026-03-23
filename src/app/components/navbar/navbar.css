@@ -35,7 +35,19 @@
 }
 
 .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.1);
     animation: fadeIn 0.5s ease;
+}
+
+.logo-icon img {
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .restaurant-name {
@@ -389,7 +401,7 @@
         padding: 0.8rem 5%;
     }
 
-    .logo-icon svg {
+    .logo-icon {
         width: 32px;
         height: 32px;
     }
