@@ -19,16 +19,16 @@ import './menuComponent.css';
 const MenuComponent = () => {
     const [activeCategory, setActiveCategory] = useState('all');
 
-    // Категории с иконками и изображениями
+    // Категории с иконками и изображениями (порядок изменен)
     const categories = [
         { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: '/images/menu/67.png' },
+        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
+        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: '/images/menu/49.png' },
+        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: '/images/menu/93.png' },
         { id: 'salads', name: 'Салаты', icon: <FaLeaf />, image: '/images/menu/1.png' },
         { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon />, image: '/images/menu/34.png' },
         { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: '/images/menu/40.png' },
         { id: 'soups', name: 'Супы', icon: <MdFastfood />, image: '/images/menu/43.png' },
-        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: '/images/menu/49.png' },
-        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
-        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: '/images/menu/93.png' },
     ];
 
     const categoryNames = {
@@ -40,6 +40,17 @@ const MenuComponent = () => {
         shashlik: 'Шашлыки',
         meat_set: 'Мясные сеты',
     };
+
+    // Порядок категорий для отображения в сетке
+    const categoryOrder = [
+        'shashlik',
+        'second_wishes',
+        'meat_set',
+        'salads',
+        'cold_wishes',
+        'assorted',
+        'soups'
+    ];
 
     // Получаем 3 блюда для категории
     const getCategoryItems = (category) => {
@@ -57,7 +68,8 @@ const MenuComponent = () => {
 
     const getFilteredCategories = () => {
         if (activeCategory === 'all') {
-            return uniqueCategories;
+            // Сортируем категории по заданному порядку
+            return categoryOrder.filter(cat => uniqueCategories.includes(cat));
         }
         return [activeCategory];
     };
@@ -67,7 +79,7 @@ const MenuComponent = () => {
     // Получаем изображение для категории
     const getCategoryImage = (categoryId) => {
         const cat = categories.find(c => c.id === categoryId);
-        return cat?.image || 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg';
+        return cat?.image || '/images/menu/67.png';
     };
 
     return (
@@ -81,7 +93,7 @@ const MenuComponent = () => {
                     </div>
                 </div>
 
-                {/* Категории с иконками */}
+                {/* Категории с иконками - также в новом порядке */}
                 <div className="menu-categories">
                     {categories.map(category => (
                         <button
