@@ -40,18 +40,6 @@ const MenuPage = () => {
         }))
     ];
 
-    const groupItemsByImage = (items) => {
-        const groups = [];
-        for (let i = 0; i < items.length; i += 3) {
-            groups.push({
-                image: items[i].image,
-                dishes: items.slice(i, i + 3),
-                categoryName: categoryNames[items[i].category]?.name || ''
-            });
-        }
-        return groups;
-    };
-
     const getFilteredItems = () => {
         let filtered = MENU;
 
@@ -80,8 +68,8 @@ const MenuPage = () => {
 
     const categoriesToShow = Object.keys(groupedByCategory);
 
-    const openModal = (imageUrl, categoryName) => {
-        setModalImage({ url: imageUrl, category: categoryName });
+    const openModal = (imageUrl, dishName) => {
+        setModalImage({ url: imageUrl, name: dishName });
         document.body.style.overflow = 'hidden';
     };
 
@@ -100,7 +88,6 @@ const MenuPage = () => {
         };
         addToCart(cartItem, 1);
 
-        // Показываем анимацию добавления
         setAddedToCart({ [dish.id]: true });
         setTimeout(() => {
             setAddedToCart({});
@@ -169,8 +156,6 @@ const MenuPage = () => {
                                 const items = groupedByCategory[category];
                                 if (!items.length) return null;
 
-                                const groups = groupItemsByImage(items);
-
                                 return (
                                     <div key={category} className="menu-category-section">
                                         <div className="menu-category-header">
@@ -181,47 +166,41 @@ const MenuPage = () => {
                                         </div>
 
                                         <div className="menu-category-items">
-                                            {groups.map((group, groupIndex) => (
-                                                <div key={groupIndex} className="menu-group-card">
+                                            {items.map((dish) => (
+                                                <div key={dish.id} className="menu-dish-card">
                                                     <div
-                                                        className="menu-group-image"
-                                                        onClick={() => openModal(group.image, categoryNames[category].name)}
+                                                        className="dish-image"
+                                                        onClick={() => openModal(dish.image, dish.name)}
                                                     >
-                                                        <img src={group.image} alt={categoryNames[category].name} loading="lazy" />
+                                                        <img src={dish.image} alt={dish.name} loading="lazy" />
                                                         <div className="image-overlay">
                                                             <div className="zoom-icon">
                                                                 <MdZoomIn />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="menu-group-list">
-                                                        {group.dishes.map((dish) => (
-                                                            <div key={dish.id} className="menu-dish-row">
-                                                                <div className="dish-info">
-                                                                    <h3 className="dish-name">{dish.name}</h3>
-                                                                    <div className="dish-price">
-                                                                        <span className="price">{dish.price}</span>
-                                                                        <span className="currency">сум</span>
-                                                                    </div>
-                                                                </div>
-                                                                <button
-                                                                    className={`add-to-cart-btn ${addedToCart[dish.id] ? 'added' : ''}`}
-                                                                    onClick={() => handleAddToCart(dish)}
-                                                                >
-                                                                    {addedToCart[dish.id] ? (
-                                                                        <>
-                                                                            <FaCheck />
-                                                                            <span>Добавлено</span>
-                                                                        </>
-                                                                    ) : (
-                                                                        <>
-                                                                            <MdAddShoppingCart />
-                                                                            <span>В корзину</span>
-                                                                        </>
-                                                                    )}
-                                                                </button>
-                                                            </div>
-                                                        ))}
+                                                    <div className="dish-details">
+                                                        <h3 className="dish-name">{dish.name}</h3>
+                                                        <div className="dish-price">
+                                                            <span className="price">{dish.price}</span>
+                                                            <span className="currency">сум</span>
+                                                        </div>
+                                                        <button
+                                                            className={`add-to-cart-btn ${addedToCart[dish.id] ? 'added' : ''}`}
+                                                            onClick={() => handleAddToCart(dish)}
+                                                        >
+                                                            {addedToCart[dish.id] ? (
+                                                                <>
+                                                                    <FaCheck />
+                                                                    <span>Добавлено</span>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <MdAddShoppingCart />
+                                                                    <span>В корзину</span>
+                                                                </>
+                                                            )}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             ))}
@@ -243,9 +222,9 @@ const MenuPage = () => {
                             <MdClose />
                         </button>
                         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                            <img src={modalImage.url} alt={modalImage.category} />
+                            <img src={modalImage.url} alt={modalImage.name} />
                             <div className="modal-caption">
-                                <span>{modalImage.category}</span>
+                                <span>{modalImage.name}</span>
                             </div>
                         </div>
                     </div>
