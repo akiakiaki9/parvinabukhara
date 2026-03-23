@@ -19,16 +19,16 @@ import './menuComponent.css';
 const MenuComponent = () => {
     const [activeCategory, setActiveCategory] = useState('all');
 
-    // Категории с иконками
+    // Категории с иконками и изображениями
     const categories = [
-        { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu /> },
-        { id: 'salads', name: 'Салаты', icon: <FaLeaf /> },
-        { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon /> },
-        { id: 'assorted', name: 'Ассорти', icon: <GiMeal /> },
-        { id: 'soups', name: 'Супы', icon: <MdFastfood /> },
-        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork /> },
-        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza /> },
-        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils /> },
+        { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg' },
+        { id: 'salads', name: 'Салаты', icon: <FaLeaf />, image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg' },
+        { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon />, image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg' },
+        { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: 'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg' },
+        { id: 'soups', name: 'Супы', icon: <MdFastfood />, image: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg' },
+        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg' },
+        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: 'https://images.pexels.com/photos/1109197/pexels-photo-1109197.jpeg' },
+        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: 'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg' },
     ];
 
     const categoryNames = {
@@ -64,6 +64,12 @@ const MenuComponent = () => {
 
     const filteredCategories = getFilteredCategories();
 
+    // Получаем изображение для категории
+    const getCategoryImage = (categoryId) => {
+        const cat = categories.find(c => c.id === categoryId);
+        return cat?.image || 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg';
+    };
+
     return (
         <section className="home-menu" id="menu">
             <div className="home-menu-container">
@@ -94,9 +100,14 @@ const MenuComponent = () => {
                     {filteredCategories.map((category) => {
                         const items = getCategoryItems(category);
                         if (!items.length) return null;
+                        const categoryImage = getCategoryImage(category);
 
                         return (
                             <div key={category} className="category-card">
+                                <div className="category-card-image">
+                                    <img src={categoryImage} alt={categoryNames[category]} loading="lazy" />
+                                    <div className="category-card-overlay"></div>
+                                </div>
                                 <div className="category-card-header">
                                     <h3 className="category-title">{categoryNames[category]}</h3>
                                     <div className="category-divider"></div>

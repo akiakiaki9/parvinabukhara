@@ -14,35 +14,28 @@ const InteriorCarousel = () => {
     const images = [
         {
             id: 1,
-            url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5',
-            title: 'Главный зал',
-            description: 'Элегантный интерьер с золотыми акцентами и уютной атмосферой',
+            url: '/images/banquets/1.png',
+            title: 'Кабины',
+            description: 'Уютные приватные кабинеты с элегантным интерьером, идеальные для семейных ужинов',
             icon: <MdRestaurant />
         },
         {
-            id: 2,
-            url: 'https://images.unsplash.com/photo-1544148103-0773bf10d330',
-            title: 'Фонтан',
-            description: 'Уникальный фонтан, создающий неповторимую атмосферу',
-            icon: <MdEmojiEvents />
-        },
-        {
             id: 3,
-            url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
-            title: 'Банкетный зал',
+            url: '/images/banquets/3.png',
+            title: 'Экзотический зал',
             description: 'Просторный зал для проведения торжественных мероприятий',
             icon: <MdPeople />
         },
         {
             id: 4,
-            url: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836',
-            title: 'Летняя терраса',
-            description: 'Уютная терраса с видом и живой атмосферой',
+            url: '/images/banquets/4.png',
+            title: 'Главный зал',
+            description: 'Элегантный интерьер с золотыми акцентами и уютной атмосферой',
             icon: <MdRestaurant />
         },
         {
             id: 5,
-            url: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1',
+            url: '/images/banquets/5.png',
             title: 'VIP зона',
             description: 'Приватная зона для особых случаев и деловых встреч',
             icon: <MdEmojiEvents />
