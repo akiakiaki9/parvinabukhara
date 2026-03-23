@@ -19,16 +19,16 @@ import './menuComponent.css';
 const MenuComponent = () => {
     const [activeCategory, setActiveCategory] = useState('all');
 
-    // Категории с иконками и изображениями
+    // Категории с иконками и изображениями (порядок для кнопок фильтрации)
     const categories = [
         { id: 'all', name: 'Все блюда', icon: <MdRestaurantMenu />, image: '/images/menu/67.png' },
-        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
-        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: '/images/menu/49.png' },
-        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: '/images/menu/93.png' },
         { id: 'salads', name: 'Салаты', icon: <FaLeaf />, image: '/images/menu/1.png' },
         { id: 'cold_wishes', name: 'Холодные закуски', icon: <GiForkKnifeSpoon />, image: '/images/menu/34.png' },
-        { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: '/images/menu/40.png' },
         { id: 'soups', name: 'Супы', icon: <MdFastfood />, image: '/images/menu/43.png' },
+        { id: 'second_wishes', name: 'Вторые блюда', icon: <GiKnifeFork />, image: '/images/menu/49.png' },
+        { id: 'shashlik', name: 'Шашлыки', icon: <MdLocalPizza />, image: '/images/menu/81.png' },
+        { id: 'assorted', name: 'Ассорти', icon: <GiMeal />, image: '/images/menu/40.png' },
+        { id: 'meat_set', name: 'Мясные сеты', icon: <FaUtensils />, image: '/images/menu/93.png' },
     ];
 
     const categoryNames = {
@@ -52,15 +52,15 @@ const MenuComponent = () => {
         meat_set: 'meat-set'
     };
 
-    // Порядок категорий для отображения в сетке
+    // Порядок категорий для отображения в сетке (на главной странице)
     const categoryOrder = [
-        'shashlik',
-        'second_wishes',
-        'meat_set',
         'salads',
         'cold_wishes',
+        'soups',
+        'second_wishes',
+        'shashlik',
         'assorted',
-        'soups'
+        'meat_set'
     ];
 
     // Получаем 3 блюда для категории
